@@ -1,16 +1,15 @@
-package com.btl.btl_android.XuLyMenuItem.ViewModel;
+package com.btl.btl_android.ui.XuLyMenuItem.ViewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
-
+public class ChangePassViewModel extends ViewModel {
     private final MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public ChangePassViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("doi pass");
     }
 
     public LiveData<String> getText() {

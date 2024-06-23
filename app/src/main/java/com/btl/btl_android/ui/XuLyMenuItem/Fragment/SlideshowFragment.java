@@ -1,8 +1,8 @@
-package com.btl.btl_android.XuLyMenuItem.Fragment;
+package com.btl.btl_android.ui.XuLyMenuItem.Fragment;
 
-import static com.yentrinh.food.Activity.DangNhap.idtkonl;
-import static com.yentrinh.food.Activity.TrangChu.dbMonAn;
-import static com.yentrinh.food.Activity.TrangChu.trangchucontext;
+import static com.btl.btl_android.Activity.DangNhap.idtkonl;
+import static com.btl.btl_android.Activity.TrangChu.dbMonAn;
+import static com.btl.btl_android.Activity.TrangChu.trangchucontext;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,11 +17,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.yentrinh.food.Activity.SuaMonAn;
-import com.yentrinh.food.Model.MonAn;
-import com.yentrinh.food.MonAnAdapter;
-import com.yentrinh.food.R;
-import com.yentrinh.food.databinding.FragmentSlideshowBinding;
+import com.btl.btl_android.Activity.SuaMonAn;
+import com.btl.btl_android.Model.MonAn;
+import com.btl.btl_android.MonAnAdapter;
+import com.btl.btl_android.R;
+import com.btl.btl_android.databinding.FragmentSlideshowBinding;
 
 public class SlideshowFragment extends Fragment {
 

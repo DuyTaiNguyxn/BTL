@@ -1,6 +1,6 @@
-package com.btl.btl_android.XuLyMenuItem.Fragment;
+package com.btl.btl_android.ui.XuLyMenuItem.Fragment;
 
-import static com.yentrinh.food.Activity.DangNhap.idtkonl;
+import static com.btl.btl_android.Activity.DangNhap.idtkonl;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -16,9 +16,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.yentrinh.food.DAO.TaiKhoanDAO;
-import com.yentrinh.food.R;
-import com.yentrinh.food.databinding.FragmentGalleryBinding;
+import com.btl.btl_android.DAO.TaiKhoanDAO;
+import com.btl.btl_android.R;
+import com.btl.btl_android.databinding.FragmentGalleryBinding;
 
 
 public class GalleryFragment extends Fragment {

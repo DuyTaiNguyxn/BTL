@@ -1,4 +1,4 @@
-package com.btl.btl_android.XuLyMenuItem.ViewModel;
+package com.btl.btl_android.ui.XuLyMenuItem.ViewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

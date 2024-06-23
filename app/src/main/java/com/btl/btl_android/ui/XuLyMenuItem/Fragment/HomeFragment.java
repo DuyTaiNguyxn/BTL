@@ -1,9 +1,9 @@
-package com.btl.btl_android.XuLyMenuItem.Fragment;
+package com.btl.btl_android.ui.XuLyMenuItem.Fragment;
 
-import static com.yentrinh.food.Activity.DangNhap.idtkonl;
-import static com.yentrinh.food.Activity.TrangChu.TimMonAn;
-import static com.yentrinh.food.Activity.TrangChu.aty;
-import static com.yentrinh.food.Activity.TrangChu.dbMonAn;
+import static com.btl.btl_android.Activity.DangNhap.idtkonl;
+import static com.btl.btl_android.Activity.TrangChu.TimMonAn;
+import static com.btl.btl_android.Activity.TrangChu.aty;
+import static com.btl.btl_android.Activity.TrangChu.dbMonAn;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,10 +17,10 @@ import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
-import com.yentrinh.food.Activity.ChiTietMonAn;
-import com.yentrinh.food.Model.MonAn;
-import com.yentrinh.food.MonAnAdapter;
-import com.yentrinh.food.R;
+import com.btl.btl_android.Activity.ChiTietMonAn;
+import com.btl.btl_android.Model.MonAn;
+import com.btl.btl_android.MonAnAdapter;
+import com.btl.btl_android.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.btl.btl_android.XuLyMenuItem.Fragment;
+package com.btl.btl_android.ui.XuLyMenuItem.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.yentrinh.food.databinding.FragmentSearchBinding;
+import com.btl.btl_android.databinding.FragmentSearchBinding;
 
 public class SearchFragment extends Fragment {
 
