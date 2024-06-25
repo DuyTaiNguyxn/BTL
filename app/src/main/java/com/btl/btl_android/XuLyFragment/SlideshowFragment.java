@@ -1,4 +1,4 @@
-package com.btl.btl_android.ui.XuLyMenuItem.Fragment;
+package com.btl.btl_android.XuLyFragment;
 
 import static com.btl.btl_android.Activity.DangNhap.idtkonl;
 import static com.btl.btl_android.Activity.TrangChu.dbMonAn;
