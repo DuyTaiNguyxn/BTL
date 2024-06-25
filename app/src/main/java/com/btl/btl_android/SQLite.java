@@ -43,16 +43,79 @@ public class SQLite extends SQLiteOpenHelper {
 
     }
 
+    public void UpdateToMon(String id,String pass, String ten, String ngaysinh, String diachi, byte[] hinh){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "DELETE FROM MonAn WHERE MaMon = '"+id+"'";
+        database.execSQL(sql);
+
+        sql = "INSERT INTO MonAn VALUES(?,?,?,?,?,?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1, id);
+        statement.bindString(2, pass);
+        statement.bindString(3, ten);
+        statement.bindString(4, ngaysinh);
+        statement.bindString(5, diachi);
+        statement.bindBlob(6, hinh);
+
+        statement.executeInsert();
+
+    }
+
 
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
+
         String sql = "CREATE TABLE TaiKhoan (TenTK Text PRIMARY KEY, MatKhau Text, HoTen Text, NgaySinh Text, DiaChi Text, Gmail Text, Avatar BLOB )";
+        db.execSQL(sql);
+        sql = "CREATE TABLE MonAn (MaMon Text PRIMARY KEY, TenMon Text, MaLoai Text, IDNguoiDang Text, CongThuc Text, HinhAnh BLOB)";
+        db.execSQL(sql);
+        sql = "CREATE TABLE LoaiMon (MaLoai Text PRIMARY KEY, TenLoai Text)";
+        db.execSQL(sql);
+        sql = "CREATE TABLE DanhGia (MaMon Text , IDNguoiDanhGia Text, DanhGia Text, PRIMARY KEY(MaMon, IdNguoiDanhGia))";
+        db.execSQL(sql);
+      
+      
+        sql = "INSERT INTO TaiKhoan VALUES ('quockhanh206', '123456','Nguyen Quoc Khanh','20/06/2001','Topax','abc@gmail.com', null)";
+        db.execSQL(sql);
+        sql = "INSERT INTO TaiKhoan VALUES ('bechin', '123456','Hoàng Thị Yến Trinh','13/03/2001','Thủ Đức','abc@gmail.com', null)";
+        db.execSQL(sql);
+        sql = "INSERT INTO TaiKhoan VALUES ('dinhon', '123456','Phan Nguyễn Duy Nhân','09/10/2001','Cửa sổ Topaz','abc@gmail.com', null)";
+        db.execSQL(sql);
+        sql = "INSERT INTO TaiKhoan VALUES ('beho', '123456','Lưu Văn Hòa','16/03/2001','ToPaz','abc@gmail.com', null)";
+        db.execSQL(sql);
+      
+        sql = "INSERT INTO MonAn VALUES ('MC1', 'Đậu hũ rang','CHAY','quockhanh206','Đậu hũ 1 miếng , Nước tương 1 muỗng',null)";
+        db.execSQL(sql);
+        sql = "INSERT INTO MonAn VALUES ('MM2', 'Cá khô hấp phò mai','MAN','quockhanh206','Cá khô x1 , Phomai x1',null)";
+        db.execSQL(sql);
+        sql = "INSERT INTO MonAn VALUES ('MM3', 'Cá khô hấp phò mai','MAN','bechin','Cá khô x1 , Phomai x1',null)";
+        db.execSQL(sql);
+        sql = "INSERT INTO MonAn VALUES ('MV4', 'Cá khô hấp phò mai','MAN','beho','Cá khô x1 , Phomai x1',null)";
+        db.execSQL(sql);
+        sql = "INSERT INTO MonAn VALUES ('MK5', 'Cá khô hấp phò mai','MAN','dinhon','Cá khô x1 , Phomai x1',null)";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO LoaiMon VALUES ('CHAY', 'Món chay' )";
+        db.execSQL(sql);
+        sql = "INSERT INTO LoaiMon VALUES ('MAN', 'Món Mặn' )";
+        db.execSQL(sql);
+        sql = "INSERT INTO LoaiMon VALUES ('KIENG', 'Món Kiêng' )";
+        db.execSQL(sql);
+        sql = "INSERT INTO LoaiMon VALUES ('VAT', 'Tất cả' )";
+        db.execSQL(sql);
+        sql = "INSERT INTO DanhGia VALUES ('MC1', 'quockhanh206','5' )";
+        db.execSQL(sql);
+        sql = "INSERT INTO DanhGia VALUES ('MM2', 'bechin', '3' )";
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS TaiKhoan");
+        db.execSQL("DROP TABLE IF EXISTS MonAn");
+        db.execSQL("DROP TABLE IF EXISTS LoaiMon");
+        db.execSQL("DROP TABLE IF EXISTS DanhGia");
     }
 
 }

@@ -24,11 +24,14 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.btl.btl_android.DAO.TaiKhoanDAO;
-import com.btl.btl_android.R;
-import com.btl.btl_android.databinding.ActivityTrangchuBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.btl.btl_android.DAO.MonAnDAO;
+import com.btl.btl_android.DAO.TaiKhoanDAO;
+import com.btl.btl_android.R;
+import com.btl.btl_android.XuLyFragment.SuaThongTinFragment;
+import com.btl.btl_android.databinding.ActivityTrangchuBinding;
+import com.btl.btl_android.ui.XuLyMenuItem.Fragment.HomeFragment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -41,8 +44,12 @@ public class TrangChu extends AppCompatActivity {
     private ActivityTrangchuBinding binding;
     private Context context;
     public static TaiKhoanDAO  dbTaiKhoan;
+
+    public static MonAnDAO dbMonAn;
     public static Context trangchucontext;
     public static Activity aty;
+    public static String TimMonAn = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +57,8 @@ public class TrangChu extends AppCompatActivity {
         context = this;
         trangchucontext = this;
         dbTaiKhoan = new TaiKhoanDAO(this);
+        dbMonAn = new MonAnDAO(this);
+
         Intent intent = this.getIntent();
         String idtk = intent.getStringExtra("idtk");
         Cursor cs = dbTaiKhoan.GetTaiKhoan(idtk);
@@ -100,12 +109,78 @@ public class TrangChu extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public  void Mofolder(View view){
+        Intent intent=new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQUEST_CODE_FOLDER);
+
+        Toast.makeText(this, "abc", Toast.LENGTH_LONG).show();
+    }
+    @Override
+    public void onActivityResult(int requesCode, int resultCode, Intent data) {
+
+        if (requesCode == REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null) {
+            Uri uri  = data.getData();
+            try{
+                InputStream inputStream = getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                ImageView imghinh = (ImageView) findViewById(R.id.imgAvatar);
+                imghinh.setImageBitmap(bitmap);
+            }catch (FileNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        super.onActivityResult(requesCode, resultCode, data);
+    }
 
 
+    public void btnmotrangdangbai(View view) {
+        Toast.makeText(this, "mo trang dang ", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this , DangBaiViet.class));
+
+    }
+
+    public void LoadKien(View view) {
+        TextView txt = (TextView) findViewById(R.id.txtTentk);
+        TimMonAn = "KIENG";
+        Fragment fragment =  new HomeFragment();
+        replaceFragment(fragment);
+    }
+    public void LoadMan(View view) {
+        TextView txt = (TextView) findViewById(R.id.txtTentk);
+        TimMonAn = "MAN";
+        Fragment fragment =  new HomeFragment();
+        replaceFragment(fragment);
+    }
+    public void LoadChay(View view) {
+        TextView txt = (TextView) findViewById(R.id.txtTentk);
+        TimMonAn = "CHAY";
+        Fragment fragment =  new HomeFragment();
+        replaceFragment(fragment);
+    }
+    public void LoadVat(View view) {
+        TextView txt = (TextView) findViewById(R.id.txtTentk);
+        TimMonAn = "VAT";
+        Fragment fragment =  new HomeFragment();
+        replaceFragment(fragment);
+    }
+
+    public void reload() {
+        Intent intent = getIntent();
+        overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
+    }
+  
+    public void ChuyenDenTimKiem(View view) {
+        Toast.makeText(this, "Sẵn sàng để tìm kiếm ", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this , TimKiem.class));
+    }
+  
     public void ChuyenDenDangXuat(View view) {
         Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, DangNhap.class));
     }
-
-
 }

@@ -1,4 +1,4 @@
-package com.btl.btl_android;
+package btl.btl_android;
 
 import android.content.Intent;
 import android.os.Bundle;

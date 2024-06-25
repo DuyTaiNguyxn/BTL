@@ -8,7 +8,6 @@ public class TaiKhoan {
     private String Mail;
     private String MK;
     private byte[] avatar;
-
     public TaiKhoan(String tenTk, String hoTen, String ngaySinh, String diaChi, String mail, String MK, byte[] avatar) {
         this.TenTk = tenTk;
         this.HoTen = hoTen;
