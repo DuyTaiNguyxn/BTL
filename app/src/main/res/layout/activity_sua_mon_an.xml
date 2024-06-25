@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SuaMonAn">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="889dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imagehinhmon"
+            android:layout_width="294dp"
+            android:layout_height="239dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/addhinh" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="125dp"
+            android:onClick="ChonAnh"
+            android:text="Chọn ảnh" />
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Tên món ăn:"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/txt_sua_tenmon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Tên món ăn:"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+        <TextView
+            android:id="@+id/txt123456"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Chọn loại:"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox_suaChay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Chay" />
+
+            <CheckBox
+                android:id="@+id/checkBox_suaMan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mặn" />
+
+            <CheckBox
+                android:id="@+id/checkBox_suaKieng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ăn kiêng" />
+
+            <CheckBox
+                android:id="@+id/checkBox_suaVat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ăn vặt" />
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/txt_sua_CongThuc"
+            android:layout_width="match_parent"
+            android:layout_height="157dp"
+            android:ems="10"
+
+            android:gravity="start|top"
+            android:hint="Nội dung công thức"
+            android:inputType="textMultiLine"
+            android:textSize="17dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:onClick="btnSua_Luu"
+                android:layout_marginLeft="125dp"
+                android:layout_marginTop="10dp"
+                android:text="Lưu"
+                tools:ignore="OnClick" />
+        </FrameLayout>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
