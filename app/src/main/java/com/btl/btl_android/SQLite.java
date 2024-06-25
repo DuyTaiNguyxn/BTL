@@ -15,17 +15,14 @@ public class SQLite extends SQLiteOpenHelper {
     public SQLite(){
         super(null,"food.db",null,1);
     }
-    // truy van khong tra ve : them, sua, xoa
     public void QuerryData(String sql){
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql);
     }
-    // truy van tra ve : tim kiem
     public Cursor GetData(String sql){
         SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(sql, null);
     }
-    //
     public void UpdateToTaiKhoan(String id,String pass, String ten, String ngaysinh, String diachi, String Gmail, byte[] hinh){
         SQLiteDatabase database = getWritableDatabase();
         String sql = "DELETE FROM TaiKhoan WHERE TenTK = '"+id+"'";
@@ -68,33 +65,17 @@ public class SQLite extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
-        // tao bang tai khoan
 
         String sql = "CREATE TABLE TaiKhoan (TenTK Text PRIMARY KEY, MatKhau Text, HoTen Text, NgaySinh Text, DiaChi Text, Gmail Text, Avatar BLOB )";
         db.execSQL(sql);
-        // tao bang mon an
         sql = "CREATE TABLE MonAn (MaMon Text PRIMARY KEY, TenMon Text, MaLoai Text, IDNguoiDang Text, CongThuc Text, HinhAnh BLOB)";
         db.execSQL(sql);
-        // tao bang cong thuc
-//        sql = "CREATE TABLE CongThuc (MaMon Text, NguyenLieu Text, Soluong Text, PRIMARY KEY(MaMon, NguyenLieu))";
-//        db.execSQL(sql);
-        // tao bang loai mon
         sql = "CREATE TABLE LoaiMon (MaLoai Text PRIMARY KEY, TenLoai Text)";
         db.execSQL(sql);
-        // tao bang danh gia mon an
         sql = "CREATE TABLE DanhGia (MaMon Text , IDNguoiDanhGia Text, DanhGia Text, PRIMARY KEY(MaMon, IdNguoiDanhGia))";
         db.execSQL(sql);
-        // tao bang binh luan mon an
-        //sql = "CREATE TABLE BinhLuan (MaMon Text PRIMARY KEY, IDNguoiBinhLuan Text, NoiDung Text)";
-        //db.execSQL(sql);
-        // tao bang kho luu tru mon
-        sql = "CREATE TABLE YeuThich (MaMon Text, IdChuKho Text, PRIMARY KEY(MaMon, IdChuKho))";
-        db.execSQL(sql);
-        //
-        sql = "CREATE TABLE Follow (IdFled Text, IdFl Text, PRIMARY KEY(IdFled, IdFl))";
-        db.execSQL(sql);
-        // +++++++++++++++++++++++ Them database _________________________________________________
-        // them data vao tai khoan
+      
+      
         sql = "INSERT INTO TaiKhoan VALUES ('quockhanh206', '123456','Nguyen Quoc Khanh','20/06/2001','Topax','abc@gmail.com', null)";
         db.execSQL(sql);
         sql = "INSERT INTO TaiKhoan VALUES ('bechin', '123456','Hoàng Thị Yến Trinh','13/03/2001','Thủ Đức','abc@gmail.com', null)";
@@ -103,7 +84,7 @@ public class SQLite extends SQLiteOpenHelper {
         db.execSQL(sql);
         sql = "INSERT INTO TaiKhoan VALUES ('beho', '123456','Lưu Văn Hòa','16/03/2001','ToPaz','abc@gmail.com', null)";
         db.execSQL(sql);
-        // them bang mon an
+      
         sql = "INSERT INTO MonAn VALUES ('MC1', 'Đậu hũ rang','CHAY','quockhanh206','Đậu hũ 1 miếng , Nước tương 1 muỗng',null)";
         db.execSQL(sql);
         sql = "INSERT INTO MonAn VALUES ('MM2', 'Cá khô hấp phò mai','MAN','quockhanh206','Cá khô x1 , Phomai x1',null)";
@@ -115,19 +96,6 @@ public class SQLite extends SQLiteOpenHelper {
         sql = "INSERT INTO MonAn VALUES ('MK5', 'Cá khô hấp phò mai','MAN','dinhon','Cá khô x1 , Phomai x1',null)";
         db.execSQL(sql);
 
-        // them bang cong thuc
-        /*
-        sql = "INSERT INTO CongThuc VALUES ('MC1', 'Đậu hũ','1 miếng')";
-        db.execSQL(sql);
-        sql = "INSERT INTO CongThuc VALUES ('MC1', 'Nước tương','1 muỗng')";
-        db.execSQL(sql);
-        sql = "INSERT INTO CongThuc VALUES ('MM2', 'Cá khô','1 con')";
-        db.execSQL(sql);
-        sql = "INSERT INTO CongThuc VALUES ('MM2', 'Phô mai','1 miếng')";
-        db.execSQL(sql);
-
-         */
-        // them bang loai mon
         sql = "INSERT INTO LoaiMon VALUES ('CHAY', 'Món chay' )";
         db.execSQL(sql);
         sql = "INSERT INTO LoaiMon VALUES ('MAN', 'Món Mặn' )";
@@ -136,23 +104,18 @@ public class SQLite extends SQLiteOpenHelper {
         db.execSQL(sql);
         sql = "INSERT INTO LoaiMon VALUES ('VAT', 'Tất cả' )";
         db.execSQL(sql);
-        // them bang danh gia mon an
         sql = "INSERT INTO DanhGia VALUES ('MC1', 'quockhanh206','5' )";
         db.execSQL(sql);
         sql = "INSERT INTO DanhGia VALUES ('MM2', 'bechin', '3' )";
         db.execSQL(sql);
-        // them bang binh luan mon an
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS TaiKhoan");
         db.execSQL("DROP TABLE IF EXISTS MonAn");
-        //db.execSQL("DROP TABLE IF EXISTS CongThuc");
         db.execSQL("DROP TABLE IF EXISTS LoaiMon");
         db.execSQL("DROP TABLE IF EXISTS DanhGia");
-        //db.execSQL("DROP TABLE IF EXISTS BinhLuan");
-        db.execSQL("DROP TABLE IF EXISTS YeuThich");
     }
 
 }

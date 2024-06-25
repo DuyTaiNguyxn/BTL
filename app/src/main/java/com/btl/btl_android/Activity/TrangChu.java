@@ -1,8 +1,5 @@
 package com.btl.btl_android.Activity;
 
-import static com.btl.btl_android.Activity.DangNhap.idtkonl;
-import static com.btl.btl_android.Activity.DangNhap.passonl;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -47,10 +44,12 @@ public class TrangChu extends AppCompatActivity {
     private ActivityTrangchuBinding binding;
     private Context context;
     public static TaiKhoanDAO  dbTaiKhoan;
+
     public static MonAnDAO dbMonAn;
     public static Context trangchucontext;
     public static Activity aty;
     public static String TimMonAn = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +58,7 @@ public class TrangChu extends AppCompatActivity {
         trangchucontext = this;
         dbTaiKhoan = new TaiKhoanDAO(this);
         dbMonAn = new MonAnDAO(this);
+
         Intent intent = this.getIntent();
         String idtk = intent.getStringExtra("idtk");
         Cursor cs = dbTaiKhoan.GetTaiKhoan(idtk);
@@ -93,7 +93,7 @@ public class TrangChu extends AppCompatActivity {
             if(cs.getBlob(6) != null){
                 hinh = cs.getBlob(6);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(hinh, 0, hinh.length);
-                ImageView avtr = (ImageView) binding.imgAvt;
+                ImageView avtr = binding.imgAvt;
                 avtr.setImageBitmap(bitmap);
             }
             etten.setText(ten);
@@ -101,11 +101,6 @@ public class TrangChu extends AppCompatActivity {
             break;
         }
     }
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.trangchu, menu);
-//        return true;
-//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -114,34 +109,6 @@ public class TrangChu extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void SuaTTTaiKhoan(View view) {
-        TextView txt = (TextView) findViewById(R.id.txtTentk);
-        Fragment fragment =  new SuaThongTinFragment();
-        replaceFragment(fragment);
-    }
-
-    public void replaceFragment(Fragment fragment){
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment_content_trangchu, fragment);
-        fragmentTransaction.commit();
-    }
-    public void LuuTTne(View view) {
-        EditText hoten = (EditText) findViewById(R.id.txtHoTenEdit);
-        EditText ngaysinh = (EditText) findViewById(R.id.txtNgaySinhedit);
-        EditText diachi = (EditText) findViewById(R.id.txtDiaChiEdit);
-        EditText gmail = (EditText) findViewById(R.id.txtGmailEdit);
-        // set ve byte
-        ImageView imgavatarne = (ImageView) findViewById(R.id.imgAvatar);
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) imgavatarne.getDrawable();
-        Bitmap bitmap = bitmapDrawable.getBitmap();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-        byte[] hinhanh = byteArrayOutputStream.toByteArray();
-
-        dbTaiKhoan.UpdateToTaiKhoan(idtkonl,passonl, hoten.getText().toString(),ngaysinh.getText().toString(), diachi.getText().toString(), gmail.getText().toString(), hinhanh );
-        //reload();
-        Toast.makeText(this, "Đã lưu!", Toast.LENGTH_LONG).show();
-    }
     public  void Mofolder(View view){
         Intent intent=new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
@@ -166,46 +133,12 @@ public class TrangChu extends AppCompatActivity {
         super.onActivityResult(requesCode, resultCode, data);
     }
 
-    public void XacNhanPass(View view) {
-        Cursor cs = dbTaiKhoan.GetTaiKhoan(idtkonl);
-
-
-        EditText pc = (EditText) findViewById(R.id.txtpasscu);
-        EditText mkm = (EditText) findViewById(R.id.txtpassmoi);
-        EditText xnpm = (EditText) findViewById(R.id.txtxacnhanpassmoi);
-
-        String smkc = pc.getText().toString();
-        String smkm = mkm.getText().toString();
-        String sxnmk = xnpm.getText().toString();
-
-        if(passonl.equals(smkc) == false){
-            Toast.makeText(this, "Mật khẩu củ không đúng! mk = "+passonl, Toast.LENGTH_LONG).show();
-        }
-        else{
-            if(smkm.equals(smkc) == true){
-                Toast.makeText(this, "Mật khẩu mới không thể giống mật khẩu cũ!", Toast.LENGTH_LONG).show();
-            }else{
-                if(smkm.equals(sxnmk) != true){
-                    Toast.makeText(this, "Mật khẩu mới và xác nhận không giống nhau!", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    String truyvan = "UPDATE TaiKhoan SET MatKhau = '"+smkm+"' WHERE TenTK ='"+idtkonl+"'";
-                    dbTaiKhoan.UpdateTaiKhoan(truyvan);
-                    Toast.makeText(this, "Đã thay đổi mật khẩu!", Toast.LENGTH_LONG).show();
-                }
-            }
-        }
-
-    }
-
 
     public void btnmotrangdangbai(View view) {
         Toast.makeText(this, "mo trang dang ", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this , DangBaiViet.class));
 
     }
-
-
 
     public void LoadKien(View view) {
         TextView txt = (TextView) findViewById(R.id.txtTentk);
@@ -240,12 +173,14 @@ public class TrangChu extends AppCompatActivity {
         overridePendingTransition(0, 0);
         startActivity(intent);
     }
+  
     public void ChuyenDenTimKiem(View view) {
         Toast.makeText(this, "Sẵn sàng để tìm kiếm ", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this , TimKiem.class));
     }
+  
     public void ChuyenDenDangXuat(View view) {
+        Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, DangNhap.class));
     }
-
 }

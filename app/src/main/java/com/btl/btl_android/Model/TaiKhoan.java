@@ -8,23 +8,17 @@ public class TaiKhoan {
     private String Mail;
     private String MK;
     private byte[] avatar;
-    public TaiKhoan(String tenTk, String hoTen, String ngaySinh, String diaChi, String mail, String MK) {
+    public TaiKhoan(String tenTk, String hoTen, String ngaySinh, String diaChi, String mail, String MK, byte[] avatar) {
         this.TenTk = tenTk;
         this.HoTen = hoTen;
         this.NgaySinh = ngaySinh;
         this.DiaChi = diaChi;
         this.Mail = mail;
         this.MK = MK;
+        this.avatar = avatar;
     }
 
-    public TaiKhoan(String tenTk, String hoTen, String ngaySinh, String diaChi, String mail, String MK, byte[] avatar) {
-        TenTk = tenTk;
-        HoTen = hoTen;
-        NgaySinh = ngaySinh;
-        DiaChi = diaChi;
-        Mail = mail;
-        this.MK = MK;
-        this.avatar = avatar;
+    public TaiKhoan() {
     }
 
     public byte[] getAvatar() {
@@ -33,9 +27,6 @@ public class TaiKhoan {
 
     public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
-    }
-
-    public TaiKhoan() {
     }
 
     public String getTenTk() {

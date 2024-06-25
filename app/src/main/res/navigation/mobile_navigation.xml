@@ -7,34 +7,29 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.yentrinh.food.ui.XuLyMenuItem.Fragment.HomeFragment"
+        android:name="com.btl.btl_android.XuLyFragment.HomeFragment"
         android:label="Trang chủ"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.yentrinh.food.ui.XuLyMenuItem.Fragment.GalleryFragment"
+        android:name="com.btl.btl_android.XuLyFragment.GalleryFragment"
         android:label="Hồ sơ"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.yentrinh.food.ui.XuLyMenuItem.Fragment.SlideshowFragment"
+        android:name="com.btl.btl_android.XuLyFragment.SlideshowFragment"
         android:label="Quản lí công thức"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
-        android:id="@+id/nav_doipass"
-        android:name="com.yentrinh.food.ui.XuLyMenuItem.Fragment.ChangePassFragment"
-        android:label="Đổi mật khẩu"
-        tools:layout="@layout/fragment_change_pass" />
-    <fragment
         android:id="@+id/nav_search"
-        android:name="com.yentrinh.food.ui.XuLyMenuItem.Fragment.SearchFragment"
+        android:name="com.btl.btl_android.XuLyFragment.SearchFragment"
         android:label="Tìm kiếm"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/nav_Dangxuat"
-        android:name="com.yentrinh.food.ui.XuLyMenuItem.Fragment.DangXuatFragment"
+        android:name="com.btl.btl_android.XuLyFragment.DangXuatFragment"
         android:label="Đăng xuất"
         tools:layout="@layout/fragment_dang_xuat" />
 

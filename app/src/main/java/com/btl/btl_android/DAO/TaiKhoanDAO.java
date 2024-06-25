@@ -14,11 +14,7 @@ public class TaiKhoanDAO {
         this.context = context;
         dbNauAn = new SQLite(context);
     }
-    public TaiKhoanDAO() {
-        
-        dbNauAn = new SQLite();
-    }
-    public int InsertTaiKhoan(TaiKhoan t) // thêm dữ liệu
+    public int InsertTaiKhoan(TaiKhoan t)
     {
         try{
             String sql = "INSERT INTO TaiKhoan VALUES('"+t.getTenTk()+"','"+t.getMK()+"','"+t.getHoTen()+"','"+t.getNgaySinh()+"','"+t.getDiaChi()+"','"+t.getMail() + "', null" +")";

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,17 +29,16 @@ public class DangNhap extends AppCompatActivity {
             tki = intent.getStringExtra("TenDn");
             mki = intent.getStringExtra("pass");
         }
-        EditText etTK = (EditText) findViewById(R.id.etTK);
-        EditText etMK = (EditText) findViewById(R.id.pass);
+        EditText etTK = findViewById(R.id.etTK);
+        EditText etMK = findViewById(R.id.pass);
         etTK.setText(tki);
         etMK.setText(mki);
         taiKhoanDAO = new TaiKhoanDAO(this);
     }
 
     public void dangnhap(View view) {
-        EditText etTK = (EditText) findViewById(R.id.etTK);
-        EditText etMK = (EditText) findViewById(R.id.pass);
-        Button btnDangNhap = (Button) findViewById(R.id.btnDN2);
+        EditText etTK = findViewById(R.id.etTK);
+        EditText etMK = findViewById(R.id.pass);
         String tk = etTK.getText().toString();
         String mk = etMK.getText().toString();
         Cursor cursor = taiKhoanDAO.GetTaiKhoan(tk);
@@ -58,8 +56,6 @@ public class DangNhap extends AppCompatActivity {
                         idtkonl = tk;
                         passonl = mk;
                         startActivity(i2);
-
-
                         Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                         break;
                     } else {

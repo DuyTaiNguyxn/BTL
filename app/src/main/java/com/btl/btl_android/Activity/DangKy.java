@@ -34,13 +34,13 @@ public class DangKy extends AppCompatActivity {
     }
 
     private void initView() {
-        btnDK = (Button) findViewById(R.id.btnDK);
-        etHoten = (EditText) findViewById(R.id.etHoTen);
-        etTk =(EditText) findViewById(R.id.etTk);
-        etNsinh = (EditText) findViewById(R.id.etNsinh);
-        etMK = (EditText) findViewById(R.id.etMK);
-        etDiachi = (EditText) findViewById(R.id.etDiachi);
-        etMail = (EditText) findViewById(R.id.etMail);
+        btnDK = findViewById(R.id.btnDK);
+        etHoten = findViewById(R.id.etHoTen);
+        etTk = findViewById(R.id.etTk);
+        etNsinh = findViewById(R.id.etNsinh);
+        etMK = findViewById(R.id.etMK);
+        etDiachi = findViewById(R.id.etDiachi);
+        etMail = findViewById(R.id.etMail);
         btnDK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +62,7 @@ public class DangKy extends AppCompatActivity {
                     context.startActivity(i);
                 }
                 else {
-                    Toast.makeText(DangKy.this,"Lỗi rồi! Bạn kiểm tra lại thông tin đã nhập nhé!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DangKy.this,"Vui lòng kiểm tra lại thông tin đã nhập!",Toast.LENGTH_SHORT).show();
                 }
             }
         });
