@@ -1,7 +1,7 @@
 package com.btl.btl_android.Activity;
 
 import static com.btl.btl_android.Activity.DangNhap.idtkonl;
-import static com.btl.btl_android.ui.XuLyMenuItem.Fragment.SlideshowFragment.MaSua;
+import static com.btl.btl_android.XuLyFragment.SlideshowFragment.MaSua;
 
 import android.content.Context;
 import android.content.Intent;

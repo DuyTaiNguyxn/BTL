@@ -1,4 +1,4 @@
-package com.btl.btl_android.ui.XuLyMenuItem.Fragment;
+package com.btl.btl_android.XuLyFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
