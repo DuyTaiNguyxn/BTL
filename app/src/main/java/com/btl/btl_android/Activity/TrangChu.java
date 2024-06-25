@@ -101,11 +101,6 @@ public class TrangChu extends AppCompatActivity {
             break;
         }
     }
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.trangchu, menu);
-//        return true;
-//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -232,19 +227,8 @@ public class TrangChu extends AppCompatActivity {
         replaceFragment(fragment);
     }
 
-    public void reload() {
-        Intent intent = getIntent();
-        overridePendingTransition(0, 0);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        finish();
-        overridePendingTransition(0, 0);
-        startActivity(intent);
-    }
-    public void ChuyenDenTimKiem(View view) {
-        Toast.makeText(this, "Sẵn sàng để tìm kiếm ", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(this , TimKiem.class));
-    }
     public void ChuyenDenDangXuat(View view) {
+        Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, DangNhap.class));
     }
 
